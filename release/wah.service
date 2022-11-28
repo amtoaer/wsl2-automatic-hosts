@@ -1,0 +1,11 @@
+[Unit]
+Description=Automatically add WSL2 ip to Windows hosts file
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart = /usr/bin/wah
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,26 @@
+# Maintainer: amtoaer <amtoaer@gmail.com>
+pkgname=wah
+pkgver=version(shell git describe --tags || echo "unknown")
+pkgrel=1
+pkgdesc="Automatically add WSL2 ip to Windows hosts file"
+arch=('x86_64')
+url="https://github.com/amtoaer/wsl2-automatic-hosts"
+license=('MIT')
+
+source=(
+    "wah"
+    "wah.service"
+    "domains"
+)
+
+sha256sums=(
+    "SKIP"
+    "SKIP"
+    "SKIP"
+)
+
+package() {
+    install -D -m 755 $srcdir/wah $pkgdir/usr/bin/wah
+    install -D -m 755 $srcdir/wah.service $pkgdir/usr/lib/systemd/system/wah.service
+    install -D -m 755 $srcdir/domains $pkgdir/etc/wah/domains
+}
