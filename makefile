@@ -7,6 +7,7 @@ clean:
 
 version:
 	sed -i 's/_ver/${VERSION}/g' release/PKGBUILD
+	sed -i 's/_ver/${VERSION}/g' release/.SRCINFO
 
 build:
 	go build -ldflags="-s -w" -o release/wah ./main.go

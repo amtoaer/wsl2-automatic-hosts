@@ -1,0 +1,15 @@
+pkgbase = wah
+pkgdesc = Automatically add WSL2 ip to Windows hosts file
+pkgver = _ver
+pkgrel = 1
+url = https://github.com/amtoaer/wsl2-automatic-hosts
+arch = x86_64
+license = MIT
+source = wah
+source = wah.service
+source = domains
+sha256sums = SKIP
+sha256sums = SKIP
+sha256sums = SKIP
+
+pkgname = wah

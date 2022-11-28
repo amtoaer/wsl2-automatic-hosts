@@ -1,6 +1,6 @@
 # Maintainer: amtoaer <amtoaer@gmail.com>
 pkgname=wah
-pkgver=version(shell git describe --tags || echo "unknown")
+pkgver=_ver
 pkgrel=1
 pkgdesc="Automatically add WSL2 ip to Windows hosts file"
 arch=('x86_64')
