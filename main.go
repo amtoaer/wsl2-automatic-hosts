@@ -11,19 +11,19 @@ import (
 	homedir "github.com/mitchellh/go-homedir"
 )
 
-var (
-	content = "# WSL START\n%s\n# WSL END"
-	regex   = regexp.MustCompile("# WSL START\n(.+?)\n# WSL END")
+const (
+	content  = "# WSL START\n%s\n# WSL END"
+	hostFile = "/mnt/c/Windows/System32/drivers/etc/hosts"
 )
 
-const hostFile = "/mnt/c/Windows/System32/drivers/etc/hosts"
+var regex = regexp.MustCompile("# WSL START\n(.+?)\n# WSL END")
 
 func getBindDomains() []string {
 	var (
 		result      []byte
 		resultStr   string
 		err         error
-		configFiles = make([]string, 2)
+		configFiles = make([]string, 0, 2)
 	)
 	if home, err := homedir.Expand("~/wah/domains"); err == nil {
 		configFiles = append(configFiles, home)
@@ -103,5 +103,9 @@ func writeHost(domains []string, ip string) error {
 }
 
 func main() {
-	writeHost(getBindDomains(), getLocalIP())
+	if err := writeHost(getBindDomains(), getLocalIP()); err != nil {
+		fmt.Printf("exec error: %s\n", err.Error())
+		return
+	}
+	fmt.Println("exec success")
 }
